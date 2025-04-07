@@ -8,14 +8,15 @@ import java.util.regex.Pattern;
 public class TrojanLinkParser {
     private static final String TAG = "TrojanLinkParser";
     
-    // Trojan链接格式: trojan://password@server:port#remark
+    // 更新的正则表达式，考虑查询参数
     private static final Pattern TROJAN_LINK_PATTERN = 
-            Pattern.compile("^trojan://([^@]+)@([^:]+):(\\d+)(#.+)?$");
+            Pattern.compile("^trojan://([^@]+)@([^:]+):(\\d+)(\\?[^#]*)?(#.+)?$");
     
     private String password;
     private String server;
     private int port;
     private String remark;
+    private String queryParams;
     
     public static boolean isValidTrojanLink(String link) {
         return TROJAN_LINK_PATTERN.matcher(link).matches();
@@ -28,40 +29,48 @@ public class TrojanLinkParser {
                 return false;
             }
             
-            // 移除前缀
-            String schemeSpecificPart = trojanLink.substring(9);
+            // 使用Uri解析整个链接
+            Uri uri = Uri.parse(trojanLink);
             
-            // 解析备注（如果有）
-            String linkWithoutRemark = schemeSpecificPart;
-            remark = "";
-            int sharpIndex = schemeSpecificPart.indexOf('#');
-            if (sharpIndex > 0) {
-                linkWithoutRemark = schemeSpecificPart.substring(0, sharpIndex);
-                remark = schemeSpecificPart.substring(sharpIndex + 1);
-            }
-            
-            // 解析密码、服务器和端口
-            String[] parts = linkWithoutRemark.split("@");
-            if (parts.length != 2) {
-                Log.e(TAG, "链接格式错误");
+            // 检查scheme
+            if (!"trojan".equals(uri.getScheme())) {
+                Log.e(TAG, "协议不是trojan");
                 return false;
             }
             
-            password = Uri.decode(parts[0]);
+            // 获取用户信息（密码）
+            String userInfo = uri.getUserInfo();
+            if (userInfo == null || userInfo.isEmpty()) {
+                Log.e(TAG, "缺少密码");
+                return false;
+            }
+            password = Uri.decode(userInfo);
             
-            String[] serverParts = parts[1].split(":");
-            if (serverParts.length != 2) {
-                Log.e(TAG, "服务器格式错误");
+            // 获取服务器地址
+            server = uri.getHost();
+            if (server == null || server.isEmpty()) {
+                Log.e(TAG, "缺少服务器地址");
                 return false;
             }
             
-            server = serverParts[0];
-            try {
-                port = Integer.parseInt(serverParts[1]);
-            } catch (NumberFormatException e) {
-                Log.e(TAG, "端口无效");
+            // 获取端口
+            port = uri.getPort();
+            if (port == -1) {
+                Log.e(TAG, "缺少端口");
                 return false;
             }
+            
+            // 获取查询参数
+            queryParams = uri.getQuery();
+            
+            // 获取备注（片段）
+            remark = uri.getFragment();
+            if (remark == null) {
+                remark = "";
+            }
+            
+            Log.i(TAG, "成功解析Trojan链接: 服务器=" + server + ", 端口=" + port + 
+                  ", SNI=" + getSni() + ", 备注=" + remark);
             
             return true;
         } catch (Exception e) {
@@ -84,5 +93,29 @@ public class TrojanLinkParser {
     
     public String getRemark() {
         return remark;
+    }
+    
+    public String getQueryParams() {
+        return queryParams;
+    }
+    
+    public String getPeer() {
+        if (queryParams == null) return null;
+        Uri uri = Uri.parse("trojan://dummy?" + queryParams);
+        return uri.getQueryParameter("peer");
+    }
+    
+    public String getSni() {
+        if (queryParams == null) return server; // 默认使用服务器作为SNI
+        Uri uri = Uri.parse("trojan://dummy?" + queryParams);
+        String sni = uri.getQueryParameter("sni");
+        return sni != null ? sni : server;  // 如果没有指定SNI，使用服务器地址
+    }
+    
+    public boolean getAllowInsecure() {
+        if (queryParams == null) return false;
+        Uri uri = Uri.parse("trojan://dummy?" + queryParams);
+        String value = uri.getQueryParameter("allowInsecure");
+        return "true".equals(value);
     }
 } 
