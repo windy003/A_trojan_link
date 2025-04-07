@@ -1,0 +1,110 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.example.trojanvpn"
+4    android:versionCode="1"
+5    android:versionName="1.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="23"
+8-->D:\files\projects\A_trojan_link\app\src\main\AndroidManifest.xml
+9        android:targetSdkVersion="33" />
+9-->D:\files\projects\A_trojan_link\app\src\main\AndroidManifest.xml
+10
+11    <uses-permission android:name="android.permission.INTERNET" />
+11-->D:\files\projects\A_trojan_link\app\src\main\AndroidManifest.xml:5:5-67
+11-->D:\files\projects\A_trojan_link\app\src\main\AndroidManifest.xml:5:22-64
+12    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+12-->D:\files\projects\A_trojan_link\app\src\main\AndroidManifest.xml:6:5-79
+12-->D:\files\projects\A_trojan_link\app\src\main\AndroidManifest.xml:6:22-76
+13    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+13-->D:\files\projects\A_trojan_link\app\src\main\AndroidManifest.xml:7:5-77
+13-->D:\files\projects\A_trojan_link\app\src\main\AndroidManifest.xml:7:22-74
+14
+15    <permission
+15-->[androidx.core:core:1.9.0] C:\Users\windy\.gradle\caches\transforms-3\ec4f76f6c0c02de8ba18086e7bd9baf5\transformed\core-1.9.0\AndroidManifest.xml:22:5-24:47
+16        android:name="com.example.trojanvpn.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+16-->[androidx.core:core:1.9.0] C:\Users\windy\.gradle\caches\transforms-3\ec4f76f6c0c02de8ba18086e7bd9baf5\transformed\core-1.9.0\AndroidManifest.xml:23:9-81
+17        android:protectionLevel="signature" />
+17-->[androidx.core:core:1.9.0] C:\Users\windy\.gradle\caches\transforms-3\ec4f76f6c0c02de8ba18086e7bd9baf5\transformed\core-1.9.0\AndroidManifest.xml:24:9-44
+18
+19    <uses-permission android:name="com.example.trojanvpn.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
+19-->[androidx.core:core:1.9.0] C:\Users\windy\.gradle\caches\transforms-3\ec4f76f6c0c02de8ba18086e7bd9baf5\transformed\core-1.9.0\AndroidManifest.xml:26:5-97
+19-->[androidx.core:core:1.9.0] C:\Users\windy\.gradle\caches\transforms-3\ec4f76f6c0c02de8ba18086e7bd9baf5\transformed\core-1.9.0\AndroidManifest.xml:26:22-94
+20
+21    <application
+21-->D:\files\projects\A_trojan_link\app\src\main\AndroidManifest.xml:9:5-35:19
+22        android:allowBackup="true"
+22-->D:\files\projects\A_trojan_link\app\src\main\AndroidManifest.xml:10:9-35
+23        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+23-->[androidx.core:core:1.9.0] C:\Users\windy\.gradle\caches\transforms-3\ec4f76f6c0c02de8ba18086e7bd9baf5\transformed\core-1.9.0\AndroidManifest.xml:28:18-86
+24        android:debuggable="true"
+25        android:extractNativeLibs="false"
+26        android:icon="@mipmap/ic_launcher"
+26-->D:\files\projects\A_trojan_link\app\src\main\AndroidManifest.xml:11:9-43
+27        android:label="Trojan VPN"
+27-->D:\files\projects\A_trojan_link\app\src\main\AndroidManifest.xml:12:9-35
+28        android:roundIcon="@mipmap/ic_launcher_round"
+28-->D:\files\projects\A_trojan_link\app\src\main\AndroidManifest.xml:13:9-54
+29        android:supportsRtl="true"
+29-->D:\files\projects\A_trojan_link\app\src\main\AndroidManifest.xml:14:9-35
+30        android:testOnly="true"
+31        android:theme="@style/AppTheme" >
+31-->D:\files\projects\A_trojan_link\app\src\main\AndroidManifest.xml:15:9-40
+32        <activity
+32-->D:\files\projects\A_trojan_link\app\src\main\AndroidManifest.xml:17:9-24:20
+33            android:name="com.example.trojanvpn.MainActivity"
+33-->D:\files\projects\A_trojan_link\app\src\main\AndroidManifest.xml:18:13-41
+34            android:exported="true" >
+34-->D:\files\projects\A_trojan_link\app\src\main\AndroidManifest.xml:19:13-36
+35            <intent-filter>
+35-->D:\files\projects\A_trojan_link\app\src\main\AndroidManifest.xml:20:13-23:29
+36                <action android:name="android.intent.action.MAIN" />
+36-->D:\files\projects\A_trojan_link\app\src\main\AndroidManifest.xml:21:17-69
+36-->D:\files\projects\A_trojan_link\app\src\main\AndroidManifest.xml:21:25-66
+37
+38                <category android:name="android.intent.category.LAUNCHER" />
+38-->D:\files\projects\A_trojan_link\app\src\main\AndroidManifest.xml:22:17-77
+38-->D:\files\projects\A_trojan_link\app\src\main\AndroidManifest.xml:22:27-74
+39            </intent-filter>
+40        </activity>
+41
+42        <service
+42-->D:\files\projects\A_trojan_link\app\src\main\AndroidManifest.xml:26:9-33:19
+43            android:name="com.example.trojanvpn.TrojanVpnService"
+43-->D:\files\projects\A_trojan_link\app\src\main\AndroidManifest.xml:27:13-45
+44            android:exported="false"
+44-->D:\files\projects\A_trojan_link\app\src\main\AndroidManifest.xml:29:13-37
+45            android:permission="android.permission.BIND_VPN_SERVICE" >
+45-->D:\files\projects\A_trojan_link\app\src\main\AndroidManifest.xml:28:13-69
+46            <intent-filter>
+46-->D:\files\projects\A_trojan_link\app\src\main\AndroidManifest.xml:30:13-32:29
+47                <action android:name="android.service.vpn.VpnService" />
+47-->D:\files\projects\A_trojan_link\app\src\main\AndroidManifest.xml:31:17-73
+47-->D:\files\projects\A_trojan_link\app\src\main\AndroidManifest.xml:31:25-70
+48            </intent-filter>
+49        </service>
+50
+51        <provider
+51-->[androidx.emoji2:emoji2:1.2.0] C:\Users\windy\.gradle\caches\transforms-3\791b39fe68826e8543c46f2d7f8b152e\transformed\emoji2-1.2.0\AndroidManifest.xml:24:9-32:20
+52            android:name="androidx.startup.InitializationProvider"
+52-->[androidx.emoji2:emoji2:1.2.0] C:\Users\windy\.gradle\caches\transforms-3\791b39fe68826e8543c46f2d7f8b152e\transformed\emoji2-1.2.0\AndroidManifest.xml:25:13-67
+53            android:authorities="com.example.trojanvpn.androidx-startup"
+53-->[androidx.emoji2:emoji2:1.2.0] C:\Users\windy\.gradle\caches\transforms-3\791b39fe68826e8543c46f2d7f8b152e\transformed\emoji2-1.2.0\AndroidManifest.xml:26:13-68
+54            android:exported="false" >
+54-->[androidx.emoji2:emoji2:1.2.0] C:\Users\windy\.gradle\caches\transforms-3\791b39fe68826e8543c46f2d7f8b152e\transformed\emoji2-1.2.0\AndroidManifest.xml:27:13-37
+55            <meta-data
+55-->[androidx.emoji2:emoji2:1.2.0] C:\Users\windy\.gradle\caches\transforms-3\791b39fe68826e8543c46f2d7f8b152e\transformed\emoji2-1.2.0\AndroidManifest.xml:29:13-31:52
+56                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+56-->[androidx.emoji2:emoji2:1.2.0] C:\Users\windy\.gradle\caches\transforms-3\791b39fe68826e8543c46f2d7f8b152e\transformed\emoji2-1.2.0\AndroidManifest.xml:30:17-75
+57                android:value="androidx.startup" />
+57-->[androidx.emoji2:emoji2:1.2.0] C:\Users\windy\.gradle\caches\transforms-3\791b39fe68826e8543c46f2d7f8b152e\transformed\emoji2-1.2.0\AndroidManifest.xml:31:17-49
+58            <meta-data
+58-->[androidx.lifecycle:lifecycle-process:2.4.1] C:\Users\windy\.gradle\caches\transforms-3\86041ab2b0d2128b301212662b855cec\transformed\lifecycle-process-2.4.1\AndroidManifest.xml:31:13-33:52
+59                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+59-->[androidx.lifecycle:lifecycle-process:2.4.1] C:\Users\windy\.gradle\caches\transforms-3\86041ab2b0d2128b301212662b855cec\transformed\lifecycle-process-2.4.1\AndroidManifest.xml:32:17-78
+60                android:value="androidx.startup" />
+60-->[androidx.lifecycle:lifecycle-process:2.4.1] C:\Users\windy\.gradle\caches\transforms-3\86041ab2b0d2128b301212662b855cec\transformed\lifecycle-process-2.4.1\AndroidManifest.xml:33:17-49
+61        </provider>
+62    </application>
+63
+64</manifest>

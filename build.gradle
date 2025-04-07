@@ -1,0 +1,25 @@
+// 顶层build文件，定义所有项目共用的配置
+
+buildscript {
+    repositories {
+        google()
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:7.4.2'
+        
+        // 注意：请不要在此处添加应用程序依赖项；
+        // 应该在各个模块的build.gradle文件中声明
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+} 
