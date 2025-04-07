@@ -264,17 +264,4 @@ public class TrojanVpnService extends VpnService {
             }
         }
     }
-
-    private void setupTun2Socks(ParcelFileDescriptor vpnInterface, 
-                              String serverAddress, int serverPort) {
-        // 需要将tun2socks原生库集成到项目中
-        // 通过JNI调用原生库
-        Tun2socksStartOptions options = new Tun2socksStartOptions();
-        options.vpnFileDescriptor = vpnInterface.getFd();
-        options.socksServerAddress = serverAddress;
-        options.socksServerPort = serverPort;
-        options.enableIPv6 = false;
-        
-        Tun2socksJni.start(options);
-    }
-} 
+}   

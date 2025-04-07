@@ -3,6 +3,7 @@ package com.example.trojanvpn;
 import android.content.Intent;
 import android.net.VpnService;
 import android.os.Bundle;
+import android.os.AsyncTask;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -14,11 +15,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import java.net.HttpURLConnection;
 import java.net.URL;
-import javax.net.ssl.SSLContext;
-import java.security.SSLContext;
-import java.security.SSLSocket;
-import java.security.SSLSocketFactory;
-import java.security.SSLParameters;
 import java.security.cert.X509Certificate;
 import java.util.Collections;
 
@@ -28,7 +24,7 @@ import javax.net.ssl.SSLSocket;
 import javax.net.ssl.SSLSocketFactory;
 import javax.net.ssl.X509TrustManager;
 import javax.net.ssl.SNIHostName;
-import android.os.AsyncTask;
+import javax.net.ssl.SSLContext;
 
 public class MainActivity extends AppCompatActivity {
     private static final int REQUEST_VPN_PERMISSION = 1;
